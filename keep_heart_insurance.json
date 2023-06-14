@@ -1,0 +1,62 @@
+{
+    "name": "keep_heart_conditions_for_impella",
+    "remarks": [
+      "A keep module for keeping patients with heart conditions that would trigger using Impella",
+      "-chf",
+      "-cardiac_surgery",
+      "-coronary_heart_disease"
+    ],
+    "states": {
+      "Initial": {
+        "type": "Initial",
+        "conditional_transition": [
+          {
+            "transition": "Keep",
+            "condition": {
+              "condition_type": "And",
+              "conditions": [
+                {
+                  "condition_type": "Or",
+                  "conditions": [
+                    {
+                      "condition_type": "Attribute",
+                      "attribute": "chf",
+                      "operator": "is not nil"
+                    },
+                    {
+                      "condition_type": "Attribute",
+                      "attribute": "cardiac_surgery",
+                      "operator": "is not nil"
+                    },
+                    {
+                      "condition_type": "Attribute",
+                      "attribute": "coronary_heart_disease",
+                      "operator": "is not nil"
+                    }
+                  ]
+                },
+                {
+                  "condition_type": "Attribute",
+                  "attribute": "HealthInsuranceModule",
+                  "operator": "is nil"
+                }
+              ]
+            }
+          },
+          {
+            "transition": "Terminal"
+          }
+        ],
+        "name": "Initial"
+      },
+      "Terminal": {
+        "type": "Terminal",
+        "name": "Terminal"
+      },
+      "Keep": {
+        "type": "Terminal",
+        "name": "Keep"
+      }
+    },
+    "gmf_version": 2
+  }

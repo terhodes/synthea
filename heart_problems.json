@@ -1,0 +1,31 @@
+{
+  "name": "heart_problems",
+  "remarks": [
+    "A keep module for keeping patients with heart problems that would trigger using Impella"
+  ],
+  "states": {
+    "Initial": {
+      "type": "Initial",
+      "conditional_transition": [
+        {
+          "transition": "Keep",
+          "condition": {
+                "condition_type": "Attribute",
+                "attribute": "diabetes",
+                "operator": "is not nil"
+            }
+        },
+    {
+        "transition": "Terminal"
+    }
+    ]
+},
+    "Terminal": {
+      "type": "Terminal"
+    },
+    "Keep": {
+      "type": "Terminal"
+    }
+  },
+  "gmf_version": 2
+}
